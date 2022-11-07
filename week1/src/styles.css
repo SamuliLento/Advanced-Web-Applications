@@ -20,7 +20,7 @@
 
     .wiki-content {
         display: flex;
-        direction: row-reverse;
+        flex-direction: row-reverse;
     }
 
     .wiki-text {
