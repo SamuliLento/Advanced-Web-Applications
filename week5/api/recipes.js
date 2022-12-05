@@ -4,13 +4,17 @@ const Recipe = require("../models/Recipe");
 const router = express.Router();
 
 router.get('/:food', function(req, res, next) {
-    res.send({
-        name: req.params.food,
-        ingredients: ["frozen pizza base", "tomato sauce", "mozzarellas"],
-        instructions: ["preheat oven 225C", "slice mozzarella", "put tomato sauce on pizza base",
-    "put mozzarella slices on pizza", "bake for 15 min"]
-    });
-  });
+    Recipe.findOne({ name: req.params.food }, (err, name) => {
+        if(err) {
+            return next(err);
+        }
+        if(name) {
+
+        } else {
+            return res.status(404).send(`Recipe ${req.params.food} not found!`);
+        }
+    })
+});
 
 router.post("/", (req, res, next) => {
     Recipe.findOne({ name: req.body.name }, (err, name) => {
