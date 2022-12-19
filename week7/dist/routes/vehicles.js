@@ -12,6 +12,6 @@ router.post("/add", (req, res) => {
     const { model, color, year, power } = body;
     vehicle = { model, color, year, power };
     vehicles.push(vehicle);
-    res.status(201).send(vehicle);
+    res.status(201).send('Vehicle added');
 });
 module.exports = router;

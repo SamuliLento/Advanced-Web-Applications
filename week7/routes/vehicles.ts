@@ -21,7 +21,7 @@ router.post("/add", (req: Request, res: Response) => {
 
     vehicles.push(vehicle);
 
-    res.status(201).send(vehicle);
+    res.status(201).send('Vehicle added');
 })
 
 module.exports = router;
