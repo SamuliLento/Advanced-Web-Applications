@@ -9,6 +9,31 @@ interface Vehicle {
     power: number
 }
 
+interface Car {
+    model: string,
+    color: string,
+    year: number,
+    power: number
+    bodyType: string,
+    wheelCount: number
+}
+
+interface Boat {
+    model: string,
+    color: string,
+    year: number,
+    power: number,
+    draft: number
+}
+
+interface Plane {
+    model: string,
+    color: string,
+    year: number,
+    power: number,
+    wingspan: number
+}
+
 let vehicles: Vehicle[] = [];
 
 router.post("/add", (req: Request, res: Response) => {
@@ -16,12 +41,23 @@ router.post("/add", (req: Request, res: Response) => {
     const body = req.body;
     let vehicle: Vehicle;
 
-    const { model, color, year, power } = body;
-    vehicle = { model, color, year, power };
+    if ('bodyType' in body && 'wheelCount' in body) {
+        const { model, color, year, power, bodyType, wheelCount } = body;
+        vehicle = { model, color, year, power, bodyType, wheelCount } as Car;
+    } else if ('draft' in body) {
+        const { model, color, year, power, draft } = body;
+        vehicle = { model, color, year, power, draft } as Boat;
+    } else if ('wingspan' in body) {
+        const { model, color, year, power, wingspan } = body;
+        vehicle = { model, color, year, power, wingspan } as Plane;
+    } else {
+        const { model, color, year, power } = body;
+        vehicle = { model, color, year, power };
+    }
 
     vehicles.push(vehicle);
 
-    res.status(201).send('Vehicle added');
+    res.status(201).send(vehicle);
 })
 
 module.exports = router;

@@ -9,9 +9,23 @@ let vehicles = [];
 router.post("/add", (req, res) => {
     const body = req.body;
     let vehicle;
-    const { model, color, year, power } = body;
-    vehicle = { model, color, year, power };
+    if ('bodyType' in body && 'wheelCount' in body) {
+        const { model, color, year, power, bodyType, wheelCount } = body;
+        vehicle = { model, color, year, power, bodyType, wheelCount };
+    }
+    else if ('draft' in body) {
+        const { model, color, year, power, draft } = body;
+        vehicle = { model, color, year, power, draft };
+    }
+    else if ('wingspan' in body) {
+        const { model, color, year, power, wingspan } = body;
+        vehicle = { model, color, year, power, wingspan };
+    }
+    else {
+        const { model, color, year, power } = body;
+        vehicle = { model, color, year, power };
+    }
     vehicles.push(vehicle);
-    res.status(201).send('Vehicle added');
+    res.status(201).send(vehicle);
 });
 module.exports = router;
