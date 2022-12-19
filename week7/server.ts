@@ -3,10 +3,6 @@ import express, {Express, Request, Response} from "express";
 const app: Express = express();
 const port: number = 5000;
 
-interface Vehicle {
-
-}
-
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello world")
 })
