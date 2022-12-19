@@ -7,7 +7,9 @@ app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello world")
 })
 
-app.use("/vehicle", require("./vehicles.ts"));
+app.use(express.json());
+
+app.use("/vehicle", require("./routes/vehicles"));
 
 app.listen(port, () => {
     console.log("Server is up'n'running at http://localhost:" + port)

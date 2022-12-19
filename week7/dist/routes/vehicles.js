@@ -7,14 +7,11 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 let vehicles = [];
 router.post("/add", (req, res) => {
-    let vehicle = {
-        model: req.body.model,
-        color: req.body.color,
-        year: req.body.year,
-        power: req.body.power
-    };
+    const body = req.body;
+    let vehicle;
+    const { model, color, year, power } = body;
+    vehicle = { model, color, year, power };
     vehicles.push(vehicle);
-    console.log(vehicles);
-    res.status(201).send('Vehicle added');
+    res.status(201).send(vehicle);
 });
 module.exports = router;

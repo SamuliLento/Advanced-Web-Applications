@@ -12,17 +12,16 @@ interface Vehicle {
 let vehicles: Vehicle[] = [];
 
 router.post("/add", (req: Request, res: Response) => {
-    
-    let vehicle: Vehicle = {
-        model: req.body.model,
-        color: req.body.color,
-        year: req.body.year,
-        power: req.body.power
-    }
+
+    const body = req.body;
+    let vehicle: Vehicle;
+
+    const { model, color, year, power } = body;
+    vehicle = { model, color, year, power };
 
     vehicles.push(vehicle);
 
-    res.status(201).send('Vehicle added');
+    res.status(201).send(vehicle);
 })
 
 module.exports = router;
