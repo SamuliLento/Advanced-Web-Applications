@@ -33,6 +33,6 @@ router.post("/", (req, res, next) => {
             return res.status(403).send("Already has that recipe!");
         }
     });
-})
+});
 
 module.exports = router;
