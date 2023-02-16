@@ -2,16 +2,29 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 
 function Header () {
+    const { t, i18n } = useTranslation();
+    const changeLanguage = (lang) => {
+        i18n.changeLanguage(lang)
+    }
+
+
     return (
         <AppBar position="static">
             <Toolbar>
-                <Button color="inherit" component={Link} to="/">
-                    Home
+                <Button edge="start" color="inherit" component={Link} to="/">
+                    {t("Home")}
                 </Button>
-                <Button color="inherit" component={Link} to="/about">
-                    About
+                <Button edge="start" color="inherit" component={Link} to="/about">
+                    {t("About")}
+                </Button>
+                <Button edge="end" color="inherit" onClick={()=> changeLanguage("fi")}>
+                    FI
+                </Button>
+                <Button edge="end" color="inherit" onClick={()=> changeLanguage("en")}>
+                    EN
                 </Button>
             </Toolbar>
         </AppBar>
