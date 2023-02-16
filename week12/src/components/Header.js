@@ -20,10 +20,10 @@ function Header () {
                 <Button edge="start" color="inherit" component={Link} to="/about">
                     {t("About")}
                 </Button>
-                <Button edge="end" color="inherit" onClick={()=> changeLanguage("fi")}>
+                <Button id="fi" edge="end" color="inherit" onClick={()=> changeLanguage("fi")}>
                     FI
                 </Button>
-                <Button edge="end" color="inherit" onClick={()=> changeLanguage("en")}>
+                <Button id="en" edge="end" color="inherit" onClick={()=> changeLanguage("en")}>
                     EN
                 </Button>
             </Toolbar>
