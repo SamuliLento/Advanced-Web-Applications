@@ -25,7 +25,6 @@ function About () {
 
     return (
         <div>
-            About
             <ul>
                 {data.map((item) => (
                     <li key={item.id}>

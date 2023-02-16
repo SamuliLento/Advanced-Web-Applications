@@ -1,7 +1,7 @@
 function MyContainer () {
     return (
         <div>
-            MyContainer
+            <p>This is the front page.</p>
         </div>
     )
 }
