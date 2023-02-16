@@ -4,7 +4,7 @@ function MyList (props) {
             <h1>{props.header}</h1>
             <ol>
                 {props.items.map((item) => (
-                    <li>
+                    <li key={item.id}>
                         {item.text}
                     </li>
                 ))}

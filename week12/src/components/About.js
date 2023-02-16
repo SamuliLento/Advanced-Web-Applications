@@ -1,30 +1,38 @@
+import React from 'react'
 import {useState, useEffect} from 'react';
 
 function About () {
 
-    const [data, setData] = useState(null)
+    let [data, setData] = useState([])
 
     useEffect(() => {
 
-        fetch("https://jsonplaceholder.typicode.com/posts")
-        .then(response => response.json())
-        .then(json => setData(json))
+        let mounted = true;
 
-        console.log(data);
+        async function doStuff() {
+            const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+            const json = await response.json()
 
-    });
+            if (mounted) {
+                setData(json);
+                console.log(json);
+            }
+        }
+        doStuff();
 
+        return () => {
+            mounted = false;
+        };
+    }, []);
 
     return (
         <div>
             About
             <ul>
                 {data.map((item) => (
-                    <React.Fragment key={item.id}>
-                        <li>
-                            {item.title}
-                        </li>
-                    </React.Fragment>
+                    <li key={item.id}>
+                        {item.title}
+                    </li>
                 ))}
             </ul>
         </div>
