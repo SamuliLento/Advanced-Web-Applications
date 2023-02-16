@@ -1,4 +1,3 @@
-import React from 'react'
 import {useState, useEffect} from 'react';
 
 function About () {
@@ -15,7 +14,6 @@ function About () {
 
             if (mounted) {
                 setData(json);
-                console.log(json);
             }
         }
         doStuff();
