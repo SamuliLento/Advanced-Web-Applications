@@ -5,14 +5,10 @@ function About () {
     const [data, setData] = useState(null)
 
     useEffect(() => {
-        async function doStuff() {
-            const url = "https://jsonplaceholder.typicode.com/posts"
-            const stuffPromise = await fetch(url);
-            const stuffJSON = await stuffPromise.json();
 
-            setData(stuffJSON);
-        }
-        doStuff();
+        fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(response => response.json())
+        .then(json => setData(json))
 
         console.log(data);
 
