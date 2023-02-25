@@ -13,7 +13,7 @@ router.post('/book/', (req, res, next) => {
                 pages: req.body.pages
             }).save((err) => {
                 if(err) return next(err);
-                return res.send(req.body);
+                return res.send("ok");
             });
         } else {
             return res.status(403).send("Already has that book!");
