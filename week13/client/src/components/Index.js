@@ -5,7 +5,7 @@ function Index () {
     const [bookData, setBookData] = useState({})
 
     const submit = (e) => {
-        e.prevetDefault()
+        e.preventDefault()
 
         fetch("/api/book", {
             method: "POST",
