@@ -6,9 +6,8 @@ function Index () {
 
     const submit = (e) => {
         e.prevetDefault()
-        console.log("Getting here")
 
-        fetch("/api/book/", {
+        fetch("/api/book", {
             method: "POST",
             headers: {
                 "Content-type": "application/json"

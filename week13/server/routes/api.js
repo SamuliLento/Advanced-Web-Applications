@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const Book = require("../models/Book");
 const router = express.Router();
 
-router.post('/book/', (req, res, next) => {
+router.post('/book', (req, res, next) => {
+    console.log(req.body);
     Book.findOne({ name: req.body.name }, (err, name) => {
         if(err) return next(err);
         if(!name) {
